@@ -1,6 +1,6 @@
 #knowingYou
 
-#This is project I created during my own time using C# on Visual Studio. 
+#This is project I created during my own time using C# on Microsoft Visual Studio. 
 
 #This project is designed to ask the user simple questions and subtract their age from the current year.
 
