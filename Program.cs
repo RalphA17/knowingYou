@@ -1,35 +1,48 @@
 ﻿using System;
-using System.Xml.Linq;
 
 namespace MyApplication
 {
     class Program
     {
-
         static void Main(string[] args)
         {
-            int x;
-            x = 2025;
+            int currentYear = 2025;
 
             Console.WriteLine("Please answer the questions below");
 
-            Console.WriteLine("what is your name?");
-            string name = Console.ReadLine();
+            string name = GetInput("What is your name?");
+            int birthYear = GetValidatedIntInput("What year were you born?");
+            int age = currentYear - birthYear;
 
-            Console.WriteLine("What year were you born?");
-            int age = Convert.ToInt32(Console.ReadLine());
-            age = 2025 - age;
+            int siblings = GetValidatedIntInput("How many siblings do you have?");
+            string hobby = GetInput("What is your hobby?");
 
-            Console.WriteLine("How many siblings do you have?");
-            int sib = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine($"Your name is {name}. You are {age} years old.");
+            Console.WriteLine($"You have {siblings} siblings and your hobby is {hobby}.");
+        }
 
-            Console.WriteLine("What is your hobby?");
-            string hob = Console.ReadLine();
+        static string GetInput(string prompt)
+        {
+            Console.WriteLine(prompt);
+            return Console.ReadLine();
+        }
 
-            Console.WriteLine("Your name is " + name + ". You are " + age +" years old.");
-            Console.WriteLine("You have " + sib + " siblings and your hobby is " + hob + ".");
-
-
+        static int GetValidatedIntInput(string prompt)
+        {
+            int result;
+            while (true)
+            {
+                Console.WriteLine(prompt);
+                if (int.TryParse(Console.ReadLine(), out result))
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input. Please enter a valid number.");
+                }
+            }
+            return result;
         }
     }
 }
